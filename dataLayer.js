@@ -4,14 +4,9 @@ const helpers = require('./helpers.js');
 const countriesAPI = 'https://corona.lmao.ninja/v2/jhucsse';
 const NovelCovidAPI = 'https://corona.lmao.ninja/v2/historical/';
 
-var lastUpdateData = [];
-var lastUpdateDate = '';
-
-// TODO:change api endpoint to countries endpoint because it has more relevant data. 
-
 exports.getCovidList = async function (country) {
     try {
-        const response = await fetch(NovelCovidAPI + country);
+        const response = await fetch(NovelCovidAPI + country.Country);
         // console.log('response: ' + JSON.stringify(data))
         let responseData = await response.json();
         return responseData;
