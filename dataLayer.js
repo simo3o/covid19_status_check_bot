@@ -1,5 +1,7 @@
+const fetch = require('node-fetch');
+
 const helpers = require('./helpers.js');
-const countriesAPI = 'https://corona.lmao.ninja/countries';
+const countriesAPI = 'https://corona.lmao.ninja/v2/jhucsse';
 const NovelCovidAPI = 'https://corona.lmao.ninja/v2/historical/';
 
 var lastUpdateData = [];
@@ -29,7 +31,11 @@ exports.getCountriesWithCorona = async function () {
     try {
         const response = await fetch(countriesAPI);
         let responseData = await response.json();
-        return responseData;
+        countriesArray = [];
+        responseData.map(elem => {
+            countriesArray.push(elem.country);
+        })
+        return countriesArray;
     } catch (error) {
         console.error('ERROR: ' + error);
         return 'ERROR';
