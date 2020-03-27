@@ -64,17 +64,28 @@ bot.onText(/\/available/, (msg, match) => {
 
     const chatId = msg.chat.id;
     const resp = 'The list of available countries is: ';
+    console.log(msg.chat.id)
+    bot.sendMessage(chatId, resp);
 
-    let countries = dataLayer.getCountriesWithCorona().then((data) => {
-        data.map(elem => {
-            bot.sendMessage(chatId, elem)
+    let countries = dataLayer.getCountriesWithCorona().then(
+        (data) => {
+            let stringMessage = '';
+            data.map(elem => {
+                stringMessage = stringMessage + elem + '\n';
+                // bot.sendMessage(chatId, elem)
+            })
+            if (stringMessage.length > 4096) {
+                bot.sendMessage(chatId, stringMessage.slice(0, 4095));
+                bot.sendMessage(chatId, stringMessage.slice(4096, (stringMessage.length - 1)))
+            } else {
+                bot.sendMessage(chatId, stringMessage);
+            };
+
         })
-    })
     // the captured "whatever"
 
     // send back the matched "whatever" to the chat
-    console.log(msg.chat.id)
-    bot.sendMessage(chatId, resp);
+
 });
 
 

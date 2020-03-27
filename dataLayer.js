@@ -33,7 +33,14 @@ exports.getCountriesWithCorona = async function () {
         let responseData = await response.json();
         countriesArray = [];
         responseData.map(elem => {
-            countriesArray.push(elem.country);
+            let province = '';
+            if (elem.province === null) {
+                province = '';
+            } else {
+                province = elem.province;
+            };
+            let countryProvince = elem.country + ', ' + province;
+            countriesArray.push(countryProvince);
         })
         return countriesArray;
     } catch (error) {
