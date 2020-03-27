@@ -1,0 +1,17 @@
+{
+  "name": "covid-telegram-bot",
+  "version": "1.0.0",
+  "description": "Covid19 case tracker",
+  "main": "bot.js",
+  "dependencies": {
+    "node-fetch": "^2.6.0",
+    "node-telegram-bot-api": "^0.40.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test",
+    "start": "node ./bot.js"
+  },
+  "author": "simo3o",
+  "license": "ISC"
+}
