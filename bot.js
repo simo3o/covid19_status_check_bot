@@ -56,12 +56,20 @@ bot.onText(/\/country (.+)/, (msg, match) => {
     )
 });
 bot.onText(/\/available/, (msg, match) => {
+
+
     // 'msg' is the received Message from Telegram
     // 'match' is the result of executing the regexp above on the text content
     // of the message
 
     const chatId = msg.chat.id;
     const resp = 'The list of available countries is: ';
+
+    let countries = dataLayer.getCountriesWithCorona().then((data) => {
+        data.map(elem => {
+            bot.sendMessage(chatId, elem)
+        })
+    })
     // the captured "whatever"
 
     // send back the matched "whatever" to the chat
