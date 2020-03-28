@@ -7,9 +7,11 @@
     "node-fetch": "^2.6.0",
     "node-telegram-bot-api": "^0.40.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^25.2.3"
+  },
   "scripts": {
-    "test": "test",
+    "test": "jest",
     "start": "node ./bot.js"
   },
   "author": "simo3o",
